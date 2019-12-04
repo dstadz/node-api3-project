@@ -1,9 +1,11 @@
 const express = require('express');
-
+const db = require('./postDb')
 const router = express.Router();
 
 router.get('/', (req, res) => {
-  // do your magic!
+  db.get()
+  .then(posts => {res.status(200).json(posts)})
+  .catch()
 });
 
 router.get('/:id', (req, res) => {
@@ -24,4 +26,4 @@ function validatePostId(req, res, next) {
   // do your magic!
 }
 
-module.exports = router;
+module.exports = postRouter;
